@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞选主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        :root{
+            --blue:#40a9ff;
+            --text:#1f1f1f;
+            --gray:#666;
+            --light:#f7f7f7;
+        }
+        body{
+            background:#ffffff;
+            color:var(--text);
+        }
+        /* 导航栏 */
+        nav{
+            width:100%;
+            padding:28px 60px;
+            display:flex;
+            justify-content:center;
+            gap:56px;
+            background:#fff;
+            position:sticky;
+            top:0;
+            z-index:99;
+        }
+        nav a{
+            text-decoration:none;
+            color:var(--gray);
+            font-size:16px;
+            transition:0.25s;
+        }
+        nav a:hover, nav a.active{
+            color:var(--blue);
+        }
+        /* 顶部主视觉横幅 */
+        .hero{
+            width:100%;
+            min-height:72vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items:center;
+            padding:0 60px;
+        }
+        .hero-text h2{
+            font-size:64px;
+            line-height:1.2;
+            margin-bottom:12px;
+        }
+        .hero-text p{
+            color:var(--gray);
+            font-size:17px;
+            letter-spacing:1px;
+        }
+        .hero-img{
+            display:flex;
+            justify-content:flex-end;
+        }
+        .hero-img img{
+            height:620px;
+            object-fit:cover;
+        }
+        /* 员工卡片区域 */
+        .section-title{
+            margin:60px 60px 20px;
+            font-size:20px;
+            border-left:3px solid var(--blue);
+            padding-left:10px;
+        }
+        .card-wrap{
+            display:flex;
+            gap:12px;
+            padding:0 60px 80px;
+            overflow-x:auto;
+            padding-bottom:20px;
+        }
+        .staff-card{
+            min-width:240px;
+            background:#111;
+            color:white;
+            cursor:pointer;
+            transition:0.3s ease;
+        }
+        .staff-card:hover{
+            transform: translateY(-6px);
+        }
+        .staff-card img{
+            width:100%;
+            height:320px;
+            object-fit:cover;
+        }
+        .card-info{
+            padding:14px;
+        }
+        .card-name{
+            font-size:20px;
+            margin-bottom:4px;
+        }
+        .card-dep{
+            color:#aaa;
+            font-size:13px;
+        }
+        /* 弹窗遮罩 */
+        .mask{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.72);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:999;
+        }
+        .mask.show{
+            display:flex;
+        }
+        .popup{
+            width:620px;
+            background:#fff;
+            padding:36px;
+            border-radius:12px;
+            position:relative;
+        }
+        .close-btn{
+            position:absolute;
+            top:20px;
+            right:24px;
+            font-size:24px;
+            cursor:pointer;
+            color:#444;
+        }
+        .popup h3{
+            font-size:28px;
+            margin-bottom:8px;
+        }
+        .popup-dep{
+            color:var(--blue);
+            margin-bottom:20px;
+        }
+        .popup-desc{
+            line-height:1.7;
+            color:#333;
+        }
+        /* 锚点板块 */
+        .block{
+            padding: 80px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .block h2{
+            font-size: 32px;
+            margin-bottom: 20px;
+            color:#1f1f1f;
+        }
+        .block p{
+            color:#555;
+            line-height:1.8;
+            font-size:16px;
+        }
+        /* 移动端适配 */
+        @media(max-width:900px){
+            .hero{
+                grid-template-columns:1fr;
+                padding:40px 24px;
+            }
+            .hero-text h2{
+                font-size:40px;
+            }
+            nav{
+                gap:24px;
+                padding:20px 12px;
+            }
+            .section-title, .card-wrap, .block{
+                padding-left:20px;
+                padding-right:20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航 -->
+    <nav>
+        <a href="#about" class="active">关于我</a>
+        <a href="#election">我的竞选</a>
+        <a href="#advantage">我的优势</a>
+        <a href="#wish">我的愿望</a>
+    </nav>
+
+    <!-- 主横幅 -->
+    <div class="hero">
+        <div class="hero-text">
+            <h2>效率，铸就未来</h2>
+            <p>讓每一項資源歸於效率，讓每一個變量服從未來。</p>
+        </div>
+        <div class="hero-img">
+            <img src="https://://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/3210010202444048841411120404030~tplv-a9rns2rl98-image.image" alt="横幅大图">
+        </div>
+    </div>
+
+    <!-- 锚点板块 -->
+    <div id="about" class="block">
+        <h2>关于我</h2>
+        <p>我待人真诚，做事踏实负责，拥有较强的执行力与集体意识。愿意倾听大家的想法，愿意投入时间处理事务，不断打磨自己，努力做好每一件交给我的工作。</p>
+    </div>
+    <div id="election" class="block">
+        <h2>我的竞选</h2>
+        <p>我本次竞选班级团支书和学习委员。如果能够当选，我会把大家的诉求放在第一位，认真落实各项事务，做好沟通桥梁，不敷衍、不推诿，尽力为大家服务。</p>
+    </div>
+    <div id="advantage" class="block">
+        <h2>我的优势</h2>
+        <p>我有耐心，善于沟通协调，遇到问题不会逃避，愿意冷静思考寻找解决方案；同时时间安排相对灵活，能够保证投入足够精力，及时响应大家的需求。</p>
+    </div>
+    <div id="wish" class="block">
+        <h2>我的愿望</h2>
+        <p>希望能够和大家一同建设更好的集体，营造互助、高效的氛围。和大家一起进步，共同完成目标，不负所有人的信任。</p>
+    </div>
+
+    <!-- 卡片区域 -->
+    <div class="section-title">个人档案</div>
+    <div class="staff-card" data-name="性格" data-dep="个人特质" data-desc="我性格开朗活泼，待人友善包容。善于与人交流，乐于倾听别人的意见。对待任务严谨认真，有责任心，能够积极调动氛围，踏实完成各项工作。">
+            <img src="https://://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/3210010202444048841411120404030~tplv-a9rns2rl98-image.image" alt="性格头像">
+            <div class="card-info">
+                <div class="card-name">性格</div>
+                <div class="card-dep">个人特质</div>
+            </div>
+        </div>
+        <div class="staff-card" data-name="经历" data-dep="成长历程" data-desc="在校期间积极参与班级与集体活动，多次配合完成各类集体任务，在实践中锻炼了沟通、配合以及处理事务的能力，积累了基础的服务经验。">
+            <img src="https://://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/3210010202444048841411120404030~tplv-a9rns2rl98-image.image" alt="经历头像">
+            <div class="card-info">
+                <div class="card-name">经历</div>
+                <div class="card-dep">成长历程</div>
+            </div>
+        </div>
+        <div class="staff-card" data-name="工作经验" data-dep="实践档案" data-desc="高中时任职三年学生会学习部部长，曾协助学校完成多项活动，熟悉基础事务流程，懂得合理规划安排任务，懂得团队协作，明白高效、负责是开展工作的关键。">
+            <img src="https://://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/3210010202444048841411120404030~tplv-a9rns2rl98-image.image" alt="工作经验头像">
+            <div class="card-info">
+                <div class="card-name">工作经验</div>
+                <div class="card-dep">实践档案</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div class="mask" id="mask">
+        <div class="popup">
+            <span class="close-btn">×</span>
+            <h3 id="pop-name"></h3>
+            <div class="popup-dep" id="pop-dep"></div>
+            <div class="popup-desc" id="pop-desc"></div>
+        </div>
+    </div>
+
+    <script>
+        const mask = document.getElementById("mask");
+        const popName = document.getElementById("pop-name");
+        const popDep = document.getElementById("pop-dep");
+        const popDesc = document.getElementById("pop-desc");
+        const closeBtn = document.querySelector(".close-btn");
+        const cards = document.querySelectorAll(".staff-card");
+
+        cards.forEach(card=>{
+            card.onclick = ()=>{
+                popName.innerText = card.dataset.name;
+                popDep.innerText = card.dataset.dep;
+                popDesc.innerText = card.dataset.desc;
+                mask.classList.add("show");
+            }
+        })
+        closeBtn.onclick = ()=> mask.classList.remove("show");
+        mask.onclick = (e)=>{
+            if(e.target === mask) mask.classList.remove("show");
+        }
+    </script>
+</body>
+</html>
